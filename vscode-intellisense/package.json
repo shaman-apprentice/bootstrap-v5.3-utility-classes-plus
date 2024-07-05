@@ -1,0 +1,36 @@
+{
+  "name": "shaman-apprentice-bootstrap-v5-3-utility-classes-plus-intelli-sense",
+  "displayName": "IntelliSense for utility classes based on bootstrap v5.3",
+  "description": "IntelliSense for utility classes based on bootstrap v5.3",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "publisher": "shaman-apprentice",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus.git"
+  },
+  "private": false,
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@jest/globals": "^29.7.0",
+    "@types/node": "^20.14.9",
+    "@types/vscode": "^1.91.0",
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.5.3"
+  }
+}
