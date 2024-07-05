@@ -1,0 +1,21 @@
+{
+  "folders": [
+    {
+      "name": "workspace",
+      "path": "../.vscode"
+    },
+    {
+      "name": "npm-package",
+      "path": "../npm-package"
+    },
+    {
+      "name": "vscode-intellisense",
+      "path": "../vscode-intellisense"
+    },
+    {
+      "name": "css-2-intellisense-builder",
+      "path": "../css-2-intellisense-builder"
+    },
+  ],
+  "settings": {}
+}

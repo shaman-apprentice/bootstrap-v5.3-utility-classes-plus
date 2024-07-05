@@ -14,6 +14,18 @@ describe("isOffsetPossiblyInAClass", () => {
     expect(isOffsetPossiblyInAClass(documentText, offset)).toBe(false);
   });
 
+  test("it doesn't confuse parent's class tag", () => {
+    const documentText = `<div class="mt-2"></div>`;
+    const offset = 18;
+    expect(isOffsetPossiblyInAClass(documentText, offset)).toBe(false);
+  })
+
+  test("it stops early at opening and closing tags", () => {
+    const documentText = `<p>class="</p>`;
+    const offset = 14;
+    expect(isOffsetPossiblyInAClass(documentText, offset)).toBe(false);
+  })
+
   describe("_isStartOfClassValue", () => {
     test('it recognizes "class" attr', () => {
       const documentText = `<div class=""></div>`;

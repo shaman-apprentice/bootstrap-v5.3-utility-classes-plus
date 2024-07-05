@@ -18,6 +18,9 @@ export const completionItemProvider = vscode.languages.registerCompletionItemPro
       const commitCharacterCompletion = new vscode.CompletionItem('console');
       commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
 
-      return [commitCharacterCompletion];
+      const commitCharacterCompletion2 = new vscode.CompletionItem('abc');
+      commitCharacterCompletion2.documentation = new vscode.MarkdownString('Press `.` to get `abc.`');
+
+      return [commitCharacterCompletion, commitCharacterCompletion2];
   }
 });

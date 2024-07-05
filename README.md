@@ -1,5 +1,8 @@
 TODO
 
+- custom intelliSense icon
+- search for todos
+
 https://github.com/twbs/bootstrap/blob/v5.3.3/dist/css/bootstrap-grid.css
 https://github.com/twbs/bootstrap/blob/v5.3.3/dist/css/bootstrap-utilities.css
 

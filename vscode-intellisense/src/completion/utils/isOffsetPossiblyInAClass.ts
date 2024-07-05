@@ -1,9 +1,10 @@
 export function isOffsetPossiblyInAClass(text: string, offset: number): boolean {
-  let pointer = offset;
-
-  while (--pointer >= 0) {
-    if (text[pointer] === '"')
-      return _isStartOfClassValue(text, pointer);
+  while (--offset >= 0) {
+    const c = text[offset];
+    if (c === '"')
+      return _isStartOfClassValue(text, offset);
+    if (c === "<" || c === ">")
+      return false;
   }
 
   return false;
