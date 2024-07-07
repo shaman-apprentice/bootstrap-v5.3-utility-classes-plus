@@ -1,19 +1,11 @@
-type IntellisenseItem = {
-  /** display value and completion value */
-  label: string;
-  markdownDoc: string;
-}
+import { IntellisenseItem } from "./IntellisenseItem.type";
+import { intellisenseItems } from "./intellisense.parser"
 
 export function file2Intellisense(text: string): IntellisenseItem[] {
-  const result: IntellisenseItem[] = []
+  const result: IntellisenseItem[] = [];
+
+  for (const intellisenseItem of intellisenseItems(text))
+    result.push(...intellisenseItem.items);
 
   return result;
 }
-
-function parseNextRule(text: string, offset: number): { nextOffset: number, items: IntellisenseItem[] } | null {
-  
-  return null;
-}
-
-// todo test @media
-// todo skip vars
