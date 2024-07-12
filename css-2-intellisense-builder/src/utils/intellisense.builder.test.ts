@@ -149,10 +149,10 @@ describe("intellisense.builder", () => {
     }
   }
 }`
-      expect(file2Intellisense(css)[0]).toEqual(
-        {
-          label: ".container",
-          markdownDoc: `@layer bs {
+      const intellisenseItems = file2Intellisense(css);
+      expect(intellisenseItems[0]).toEqual({
+        label: ".container",
+        markdownDoc: `@layer bs {
   .container {
     --bs-gutter-x: 1.5rem;
     --bs-gutter-y: 0;
@@ -161,8 +161,20 @@ describe("intellisense.builder", () => {
     padding-left: calc(var(--bs-gutter-x) * 0.5);
   }
 }`
-        }
-      );
+      });
+
+      expect(intellisenseItems.length).toBe(5);
+
+      expect(intellisenseItems[3]).toEqual({
+        label: ".container-sm",
+        markdownDoc: `@layer bs {
+  @media (min-width: 768px) {
+    .container-sm {
+      max-width: 720px;
+    }
+  }
+}`
+      });
     });
   })
 });
