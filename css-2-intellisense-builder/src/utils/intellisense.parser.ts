@@ -1,4 +1,6 @@
+import { findEndOfAtRule as findEndOfAtRuleDecl } from "./atRule.helper";
 import { IntellisenseItem } from "./IntellisenseItem.type";
+import { format } from "./markdown.helper";
 import { findExcludingComments } from "./token.helper";
 
 export type ParsedIntellisenseItems = {
@@ -10,12 +12,29 @@ export type ParsedIntellisenseItems = {
 export function* intellisenseItems(
   css: string,
   offset = 0,
-  /** For now, assume no nested contexts like `@layer @media ...`  */
-  currentContext: string | null = null
+  /** e.g. when rules are in @media context */
+  atContext: string[] = []
 ): Generator<ParsedIntellisenseItems> {
   const start = findExcludingComments(css, /\S/, offset);
   if (start < offset)
     return;
+
+  if (css[start] === "@") {
+    const endOfAtRuleDecl = findEndOfAtRuleDecl(css, start);
+    atContext.push(css.substring(start, endOfAtRuleDecl).trimEnd());
+    yield* intellisenseItems(css, endOfAtRuleDecl + 1, atContext);
+    return;
+  }
+
+  if (css[start] === "}") {
+    if (atContext.length === 0)
+      throw new Error(`Found closing "}" at unexpected offset "${offset}"`);
+    else {
+      atContext.pop();
+      yield* intellisenseItems(css, start + 1, atContext);
+      return;
+    }
+  }
 
   const startOfRuleContent = findExcludingComments(css, /{/, start + 1);
   const endOfRuleContent = findExcludingComments(css, /}/, startOfRuleContent + 1);
@@ -24,18 +43,16 @@ export function* intellisenseItems(
     .slice(start, startOfRuleContent)
     .split(",")
     .map(s => s.trim());
-  const ruleContent = css.substring(startOfRuleContent, endOfRuleContent + 1);
+  const ruleContent = css.substring(startOfRuleContent + 1, endOfRuleContent);
   const nextOffset = endOfRuleContent + 2;
-
-  debugger;
 
   yield {
     nextOffset,
     items: selectors.map(selector => ({
       label: selector,
-      markdownDoc: `${selector} ${ruleContent}`,
+      markdownDoc: format(atContext, selector, ruleContent),
     }))
   }
 
-  yield* intellisenseItems(css, nextOffset);
+  yield* intellisenseItems(css, nextOffset, atContext);
 }

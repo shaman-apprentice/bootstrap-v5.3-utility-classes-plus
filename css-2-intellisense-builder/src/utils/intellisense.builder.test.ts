@@ -109,6 +109,60 @@ describe("intellisense.builder", () => {
 }`,
       }
     ]);
+  });
+
+  describe("rules within context", () => {
+    test("it can parse media queries", () => {
+      const css = `
+@media (min-width: 768px) {
+  .d-md-inline {
+    display: inline;
+  }
+}`
+      expect(file2Intellisense(css)).toEqual([
+        {
+          label: ".d-md-inline",
+          markdownDoc: `@media (min-width: 768px) {
+  .d-md-inline {
+    display: inline;
+  }
+}`
+        }
+      ]);
+    });
+
+    test("it can parse multiple at rules", () => {
+      const css = `
+@layer bs {
+  .container,
+  .container-fluid {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+
+  @media (min-width: 768px) {
+    .container-md, .container-sm, .container {
+      max-width: 720px;
+    }
+  }
+}`
+      expect(file2Intellisense(css)[0]).toEqual(
+        {
+          label: ".container",
+          markdownDoc: `@layer bs {
+  .container {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    width: 100%;
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+}`
+        }
+      );
+    });
   })
 });
-
