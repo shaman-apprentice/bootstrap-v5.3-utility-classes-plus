@@ -11,6 +11,7 @@ TODO
 ## Open TODOs for v1.0.0
 - custom intelliSense icon
 - minify bundle
+  - remove duplicates
 - document usage and css/custom.css
 - search for todos
 

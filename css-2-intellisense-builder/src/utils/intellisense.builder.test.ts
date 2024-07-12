@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { file2Intellisense } from "./intellisense.builder";
+import { css2Intellisense } from "./intellisense.builder";
 
 describe("intellisense.builder", () => {
   test("it can build one selector", () => {
@@ -7,7 +7,7 @@ describe("intellisense.builder", () => {
 .w-3 {
   width: 1rem;
 }`;
-    expect(file2Intellisense(css)).toEqual([
+    expect(css2Intellisense(css)).toEqual([
       {
         label: ".w-3",
         markdownDoc: `.w-3 {
@@ -21,7 +21,7 @@ describe("intellisense.builder", () => {
     const css = `.w-3, .w-1rem {
   width: 1rem;
 }`;
-    expect(file2Intellisense(css)).toEqual([
+    expect(css2Intellisense(css)).toEqual([
       {
         label: ".w-3",
         markdownDoc: `.w-3 {
@@ -42,7 +42,7 @@ describe("intellisense.builder", () => {
 .w-1rem {
   width: 1rem;
 }`;
-    expect(file2Intellisense(css)).toEqual([
+    expect(css2Intellisense(css)).toEqual([
       {
         label: ".w-3",
         markdownDoc: `.w-3 {
@@ -64,7 +64,7 @@ describe("intellisense.builder", () => {
   flex: 0 0 auto;
   width: auto;
 }`;
-    expect(file2Intellisense(css)).toEqual([
+    expect(css2Intellisense(css)).toEqual([
       {
         label: ".row-cols-auto > *",
         markdownDoc: `.row-cols-auto > * {
@@ -80,7 +80,7 @@ describe("intellisense.builder", () => {
 .w-1rem {
   width: 1rem;
 }`;
-    expect(file2Intellisense(css)).toEqual([
+    expect(css2Intellisense(css)).toEqual([
       {
         label: ".w-1rem",
         markdownDoc: `.w-1rem {
@@ -101,7 +101,7 @@ describe("intellisense.builder", () => {
 .w-3 {
   width: 1rem;
 }`;
-    expect(file2Intellisense(css)).toEqual([
+    expect(css2Intellisense(css)).toEqual([
       {
         label: ".w-3",
         markdownDoc: `.w-3 {
@@ -119,7 +119,7 @@ describe("intellisense.builder", () => {
     display: inline;
   }
 }`
-      expect(file2Intellisense(css)).toEqual([
+      expect(css2Intellisense(css)).toEqual([
         {
           label: ".d-md-inline",
           markdownDoc: `@media (min-width: 768px) {
@@ -149,7 +149,7 @@ describe("intellisense.builder", () => {
     }
   }
 }`
-      const intellisenseItems = file2Intellisense(css);
+      const intellisenseItems = css2Intellisense(css);
       expect(intellisenseItems[0]).toEqual({
         label: ".container",
         markdownDoc: `@layer bs {

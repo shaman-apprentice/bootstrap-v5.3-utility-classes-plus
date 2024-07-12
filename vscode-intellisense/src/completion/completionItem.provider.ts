@@ -1,5 +1,12 @@
 import * as vscode from 'vscode';
 import { isOffsetPossiblyInAClass } from './utils/isOffsetPossiblyInAClass';
+import intellisenseItems from "../intellisenseItems.json";
+
+// TODO import from css-2-intellisense-builder
+type IntellisenseItem = {
+  label: string;
+  markdownDoc: string;
+}
 
 export const completionItemProvider = vscode.languages.registerCompletionItemProvider(
   'html',
@@ -13,14 +20,12 @@ export const completionItemProvider = vscode.languages.registerCompletionItemPro
       if (!isOffsetPossiblyInAClass(document.getText(), document.offsetAt(position)))
         return null;
 
-
-
-      const commitCharacterCompletion = new vscode.CompletionItem('console');
-      commitCharacterCompletion.documentation = new vscode.MarkdownString('Press `.` to get `console.`');
-
-      const commitCharacterCompletion2 = new vscode.CompletionItem('abc');
-      commitCharacterCompletion2.documentation = new vscode.MarkdownString('Press `.` to get `abc.`');
-
-      return [commitCharacterCompletion, commitCharacterCompletion2];
+      return (intellisenseItems as IntellisenseItem[]).map(item => {
+        const result = new vscode.CompletionItem(item.label)
+        result.documentation = new vscode.MarkdownString().appendCodeblock(item.markdownDoc, 'css');
+        result.insertText = item.label.slice(1); // remove leading "." of class-selector
+        return result;
+      });
+    }
   }
-});
+);
