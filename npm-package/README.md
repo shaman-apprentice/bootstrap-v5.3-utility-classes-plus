@@ -6,7 +6,8 @@ This project provides utility classes based on [Bootstrap v5.3.3](https://getboo
 
 ## Usage
 
-TODO
+- install and import css
+- vscode extension
 
 ## Open TODOs for v1.0.0
 - custom intelliSense icon

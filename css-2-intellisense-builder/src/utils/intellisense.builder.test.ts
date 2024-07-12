@@ -112,7 +112,7 @@ describe("intellisense.builder", () => {
   });
 
   test("it works when css ends with a comment in same line", () => {
-    const css = `.w-3 { width: 1rem; } /* TODO more rules */`;
+    const css = `.w-3 { width: 1rem; } /* DODO more rules */`;
     expect(css2Intellisense(css)).toEqual([{
       label: "w-3",
       markdownDoc: `.w-3 {
