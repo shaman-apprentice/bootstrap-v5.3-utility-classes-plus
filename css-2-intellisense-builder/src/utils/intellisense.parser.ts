@@ -1,4 +1,4 @@
-import { findEndOfAtRule as findEndOfAtRuleDecl } from "./atRule.helper";
+import { parseAtRule } from "./atRule.parser";
 import { IntellisenseItem } from "./IntellisenseItem.type";
 import { format } from "./markdown.helper";
 import { findExcludingComments } from "./token.helper";
@@ -20,9 +20,11 @@ export function* intellisenseItems(
     return;
 
   if (css[start] === "@") {
-    const endOfAtRuleDecl = findEndOfAtRuleDecl(css, start);
-    atContext.push(css.substring(start, endOfAtRuleDecl).trimEnd());
-    yield* intellisenseItems(css, endOfAtRuleDecl + 1, atContext);
+    const parsedAtRule = parseAtRule(css, start);
+    if (!parsedAtRule.isDeclaration)
+      atContext.push(parsedAtRule.atRule);
+
+    yield* intellisenseItems(css, parsedAtRule.nextOffset, atContext);
     return;
   }
 
