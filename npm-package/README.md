@@ -23,6 +23,10 @@ Switching to one framework pays off in the long term. Having one set of utility 
 
 Therefore, this project extracts the utility classes from Bootstrap and removes all style related rules from them. Its goal is to be usable with all frameworks. It should help with the migration to one framework and keep being useful afterwards.
 
+## Contribution
+
+This project is build with Angular in mind. If it doesn't fit your needs, feel free to open an issue. I am open for enhancements.
+
 ## Acknowledgements
 
 As the utility classes are based on Bootstrap v5.3.3, this project wants to give a huge thank you to the Bootstrap team for their hard work and contributions to the open-source community ♥
