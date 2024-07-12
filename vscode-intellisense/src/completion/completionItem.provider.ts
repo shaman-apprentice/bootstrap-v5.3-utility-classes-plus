@@ -23,7 +23,7 @@ export const completionItemProvider = vscode.languages.registerCompletionItemPro
       return (intellisenseItems as IntellisenseItem[]).map(item => {
         const result = new vscode.CompletionItem(item.label)
         result.documentation = new vscode.MarkdownString().appendCodeblock(item.markdownDoc, 'css');
-        result.insertText = item.label.slice(1); // remove leading "." of class-selector
+        result.insertText = item.label;
         return result;
       });
     }

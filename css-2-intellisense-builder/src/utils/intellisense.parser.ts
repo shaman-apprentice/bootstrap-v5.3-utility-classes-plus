@@ -51,7 +51,7 @@ export function* intellisenseItems(
   yield {
     nextOffset,
     items: selectors.map(selector => ({
-      label: selector,
+      label: selector.slice(1), // remove leading "." of class-selector
       markdownDoc: format(atContext, selector, ruleContent),
     }))
   }
