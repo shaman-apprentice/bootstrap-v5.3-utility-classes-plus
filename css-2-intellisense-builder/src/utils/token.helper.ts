@@ -6,10 +6,10 @@ export function findExcludingComments(text: string, regex: RegExp, offset: numbe
   const nextCommentStart = findStartOfNextComment(text, offset);
   if (nextCommentStart !== -1) {
     const nextCommentEnd = findEndOfComment(text, nextCommentStart);
-    const isFindCommentStart = offset === nextCommentStart;
-    const isFindWithinComment = find < nextCommentEnd;
+    const isFindCommentStart = find === nextCommentStart;
+    const isFindWithinComment = find > nextCommentStart && find < nextCommentEnd;
     if (isFindCommentStart || isFindWithinComment)
-      return findExcludingComments(text, regex, nextCommentEnd);
+      return findExcludingComments(text, regex, nextCommentEnd + 1);
   }
 
   return find;

@@ -9,7 +9,7 @@ describe("intellisense.builder", () => {
 }`;
     expect(css2Intellisense(css)).toEqual([
       {
-        label: ".w-3",
+        label: "w-3",
         markdownDoc: `.w-3 {
   width: 1rem;
 }`,
@@ -23,13 +23,13 @@ describe("intellisense.builder", () => {
 }`;
     expect(css2Intellisense(css)).toEqual([
       {
-        label: ".w-3",
+        label: "w-3",
         markdownDoc: `.w-3 {
   width: 1rem;
 }`,
       },
       {
-        label: ".w-1rem",
+        label: "w-1rem",
         markdownDoc: `.w-1rem {
   width: 1rem;
 }`,
@@ -44,13 +44,13 @@ describe("intellisense.builder", () => {
 }`;
     expect(css2Intellisense(css)).toEqual([
       {
-        label: ".w-3",
+        label: "w-3",
         markdownDoc: `.w-3 {
   width: 1rem;
 }`,
       },
       {
-        label: ".w-1rem",
+        label: "w-1rem",
         markdownDoc: `.w-1rem {
   width: 1rem;
 }`,
@@ -66,7 +66,7 @@ describe("intellisense.builder", () => {
 }`;
     expect(css2Intellisense(css)).toEqual([
       {
-        label: ".row-cols-auto > *",
+        label: "row-cols-auto > *",
         markdownDoc: `.row-cols-auto > * {
   flex: 0 0 auto;
   width: auto;
@@ -82,7 +82,7 @@ describe("intellisense.builder", () => {
 }`;
     expect(css2Intellisense(css)).toEqual([
       {
-        label: ".w-1rem",
+        label: "w-1rem",
         markdownDoc: `.w-1rem {
   width: 1rem;
 }`,
@@ -103,12 +103,22 @@ describe("intellisense.builder", () => {
 }`;
     expect(css2Intellisense(css)).toEqual([
       {
-        label: ".w-3",
+        label: "w-3",
         markdownDoc: `.w-3 {
   width: 1rem;
 }`,
       }
     ]);
+  });
+
+  test("it works when css ends with a comment in same line", () => {
+    const css = `.w-3 { width: 1rem; } /* TODO more rules */`;
+    expect(css2Intellisense(css)).toEqual([{
+      label: "w-3",
+      markdownDoc: `.w-3 {
+  width: 1rem;
+}`
+    }]);
   });
 
   describe("rules within context", () => {
@@ -121,7 +131,7 @@ describe("intellisense.builder", () => {
 }`
       expect(css2Intellisense(css)).toEqual([
         {
-          label: ".d-md-inline",
+          label: "d-md-inline",
           markdownDoc: `@media (min-width: 768px) {
   .d-md-inline {
     display: inline;
@@ -151,7 +161,7 @@ describe("intellisense.builder", () => {
 }`
       const intellisenseItems = css2Intellisense(css);
       expect(intellisenseItems[0]).toEqual({
-        label: ".container",
+        label: "container",
         markdownDoc: `@layer bs {
   .container {
     --bs-gutter-x: 1.5rem;
@@ -166,7 +176,7 @@ describe("intellisense.builder", () => {
       expect(intellisenseItems.length).toBe(5);
 
       expect(intellisenseItems[3]).toEqual({
-        label: ".container-sm",
+        label: "container-sm",
         markdownDoc: `@layer bs {
   @media (min-width: 768px) {
     .container-sm {
