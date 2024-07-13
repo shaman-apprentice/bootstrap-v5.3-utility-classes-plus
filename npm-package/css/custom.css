@@ -1,28 +1,30 @@
-.w-3 {
-  width: 1rem;
+.w-1 { width: 0.25rem; }
+.w-2 { width: 0.5rem; }
+.w-3 { width: 1rem; }
+.w-4 { width: 1.5rem; }
+.w-5 { width: 3rem; }
+
+.h-1 { width: 0.25rem; }
+.h-2 { width: 0.5rem; }
+.h-3 { width: 1rem; }
+.h-4 { width: 1.5rem; }
+.h-5 { width: 3rem; }
+
+.w-text-max { max-width: 80ch; }
+
+.text-sm { font-size: 0.75rem; line-height: 1rem; }
+.text-m { font-size: 1rem; line-height: 1.5rem; }
+.text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+.text-xl { font-size: 1.5rem; line-height: 2rem }
+
+.text-semibold { font-weight: 600; }
+.text-bold { font-weight: 700; }
+
+.flex-centered {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
-.w-4 {
-  width: 1.5rem;
-}
-
-.w-5 {
-  width: 3rem;
-}
-
-.h-3 {
-  width: 1rem;
-}
-
-.h-4 {
-  width: 1.5rem;
-}
-
-.h-5 {
-  width: 3rem;
-}
-
-/* .text-m {
-  font-size: 1rem;
-  line-height: 1.5rem;
-*/
+.cursor-pointer { cursor: pointer; }

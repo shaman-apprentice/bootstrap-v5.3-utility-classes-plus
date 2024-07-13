@@ -6,12 +6,17 @@ This project provides utility classes based on [Bootstrap v5.3.3](https://getboo
 
 ## Usage
 
-- install and import css
-- vscode extension
+After `npm i @shaman-apprentice/bootstrap-v5.3-utility-classes-plus` you can import styles from *node_modules/@shaman-apprentice/bootstrap-v5.3-utility-classes-plus/dist/index.css* into your app.
+
+For documentation refer to the Layout section of official [Bootstrap documentation](https://getbootstrap.com/docs/5.3/layout/utilities/). Be aware that not all css rules are integrated in this library.
+
+**In addition to Bootstrap's utility classes, you can use the custom utility classes defined in [custom.css](./css/custom.css).**
+
 
 ## Open TODOs for v1.0.0
-- document usage and css/custom.css
+
 - search for todos
+- link vscode extension
 
 ## Motivation
 
