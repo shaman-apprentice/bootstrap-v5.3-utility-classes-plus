@@ -1,11 +1,16 @@
 {
   "name": "@shaman-apprentice/bootstrap-v5.3-utility-classes-plus",
   "version": "0.0.1",
-  "files": [ "/dist/" ],
+  "files": [
+    "/dist/"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "postcss css/index.css -o dist/index.css"
   },
-  "keywords": [ "css utility classes", "bootstrap"],
+  "keywords": [
+    "css utility classes",
+    "bootstrap"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus.git"
@@ -13,5 +18,11 @@
   "author": "shaman-apprentice",
   "private": false,
   "license": "MIT",
-  "description": "utility classes of bootstrap"
+  "description": "utility classes of bootstrap",
+  "devDependencies": {
+    "cssnano": "^7.0.4",
+    "postcss": "^8.4.39",
+    "postcss-cli": "^11.0.0",
+    "postcss-import": "^16.1.0"
+  }
 }
