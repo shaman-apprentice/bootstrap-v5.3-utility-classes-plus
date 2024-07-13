@@ -19,6 +19,7 @@ export const completionItemProvider = vscode.languages.registerCompletionItemPro
         const result = new vscode.CompletionItem(item.label)
         result.documentation = new vscode.MarkdownString().appendCodeblock(item.markdownDoc, 'css');
         result.insertText = item.label;
+        result.kind = vscode.CompletionItemKind.Constant;
         return result;
       });
     }
