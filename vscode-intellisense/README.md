@@ -4,18 +4,8 @@ Provide intellisense for all utility classes of [@shaman-apprentice/bootstrap-v5
 
 ### Example completion item
 
-![Example completion item](https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus/blob/main/vscode-intellisense/docs/completionItem.example.png)
+![Example completion item](https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus/blob/main/vscode-intellisense/docs/completionItem.example.png?raw=true)
 
 ### Example hover
 
-![Example hover](https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus/blob/main/vscode-intellisense/docs/hover.example.png)
-
-## Release Notes
-
-### 1.0.0
-
-Initial release.
-
----
-
-**Enjoy!**
+![Example hover](https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus/blob/main/vscode-intellisense/docs/hover.example.png?raw=true)
