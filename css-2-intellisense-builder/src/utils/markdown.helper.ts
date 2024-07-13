@@ -11,11 +11,11 @@ export function format(atContext: string[], selector: string, ruleContent: strin
 
   result += " {\n";
   level += 1;
-  ruleContent.split("\n")
+  ruleContent.split(/[\n;]/)
     .map(line => line.trim())
     .filter(line => line !== "")
     .forEach(line => {
-      result += `${indent(level)}${line.trim()}\n`;
+      result += `${indent(level)}${line.trim()};\n`;
     });
   level -= 1;
   result += `${indent(level)}}`
