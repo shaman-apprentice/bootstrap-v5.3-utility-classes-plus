@@ -5,15 +5,17 @@
     "/dist/"
   ],
   "scripts": {
-    "build": "postcss css/index.css -o dist/index.css"
+    "build": "postcss css/index.css -o dist/index.css",
+    "prepack": "npm run build"
   },
   "keywords": [
     "css utility classes",
     "bootstrap"
   ],
+  "homepage": "https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus/tree/main/npm-package",
   "repository": {
     "type": "git",
-    "url": "https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus.git"
+    "url": "git+https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus.git"
   },
   "author": "shaman-apprentice",
   "private": false,
