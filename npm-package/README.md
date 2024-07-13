@@ -10,7 +10,7 @@ After `npm i @shaman-apprentice/bootstrap-v5.3-utility-classes-plus` you can imp
 
 For documentation refer to the Layout section of official [Bootstrap documentation](https://getbootstrap.com/docs/5.3/layout/utilities/). Be aware that not all css rules are integrated in this library.
 
-**In addition to Bootstrap's utility classes, you can use the custom utility classes defined in [custom.css](./css/custom.css).**
+**In addition to Bootstrap's utility classes, you can use the custom utility classes defined in [custom.css](https://github.com/shaman-apprentice/bootstrap-v5.3-utility-classes-plus/blob/main/npm-package/css/custom.css).**
 
 
 ## Open TODOs for v1.0.0

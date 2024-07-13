@@ -1,10 +1,10 @@
 {
-  "name": "shaman-apprentice-bootstrap-v5-3-utility-classes-plus-intellisense",
+  "name": "bootstrap-v5-3-utility-classes-plus-intellisense",
   "displayName": "IntelliSense for utility classes based on bootstrap v5.3",
   "description": "IntelliSense for utility classes based on bootstrap v5.3",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.91.0"
   },
   "publisher": "shaman-apprentice",
   "license": "MIT",
@@ -19,17 +19,24 @@
   "activationEvents": [
     "onStartupFinished"
   ],
-  "main": "./out/extension.js",
+  "main": "./dist/extension.js",
   "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "test": "jest"
+    "compile": "npm run check-types && node esbuild.js",
+    "check-types": "tsc --noEmit",
+    "watch": "npm-run-all -p watch:*",
+    "watch:esbuild": "node esbuild.js --watch",
+    "watch:tsc": "tsc --noEmit --watch --project tsconfig.json",
+    "vscode:prepublish": "npm run test && npm run package",
+    "package": "npm run check-types && node esbuild.js --production",
+    "test": "jest",
+    "publish": "npx vsce publish"
   },
   "devDependencies": {
     "@jest/globals": "^29.7.0",
     "@types/node": "^20.14.9",
     "@types/vscode": "^1.91.0",
+    "esbuild": "^0.23.0",
+    "npm-run-all": "^4.1.5",
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.3"
   }
