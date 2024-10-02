@@ -4,6 +4,8 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Feat 🚀 | Fixed 🐞 | Breaking 🐱)
 
-<!-- ## [1.0.0] YYYY-MM-DD
+## [0.0.3] 2024-07-23
 
-- Release initial version. -->
+### Fixed 🐞
+
+- `h-x` mapping to `width` instead of `height` css rules.
