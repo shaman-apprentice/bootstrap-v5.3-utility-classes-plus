@@ -4,6 +4,16 @@ This changelog is roughly based on [Keep a Changelog](http://keepachangelog.com/
 
 ## [unreleased] (Feat 🚀 | Fixed 🐞 | Breaking 🐱)
 
+## [0.1.0] 2024-10-02
+
+### Breaking 🐱
+
+- Remove styling `fs-x` classes, which make no sense to me.
+
+### Fixed 🐞
+
+- Remove `font-monospace` class, whose css variable was not set and therefore, had no effect
+
 ## [0.0.3] 2024-07-23
 
 ### Fixed 🐞
