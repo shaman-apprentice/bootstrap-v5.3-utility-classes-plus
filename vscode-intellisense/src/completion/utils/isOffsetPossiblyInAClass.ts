@@ -2,7 +2,7 @@ export function isOffsetPossiblyInAClass(text: string, offset: number): boolean 
   while (--offset >= 0) {
     const c = text[offset];
     if (c === '"')
-      return _isStartOfClassValue(text, offset);
+      return _isStartOfClassorClassNameValue(text, offset);
     if (c === "<" || c === ">")
       return false;
   }
@@ -10,12 +10,8 @@ export function isOffsetPossiblyInAClass(text: string, offset: number): boolean 
   return false;
 }
 
-export function _isStartOfClassValue(text: string, offset: number): boolean {
-  if (text[--offset]?.toLowerCase() !== "=") return false;
-  if (text[--offset]?.toLowerCase() !== "s") return false;
-  if (text[--offset]?.toLowerCase() !== "s") return false;
-  if (text[--offset]?.toLowerCase() !== "a") return false;
-  if (text[--offset]?.toLowerCase() !== "l") return false;
-  if (text[--offset]?.toLowerCase() !== "c") return false;
-  return true;
-}
+export const _isStartOfClassorClassNameValue = (text: string, offset: number) =>
+  text.slice(offset - 6, offset).toLowerCase() === "class=" || text.slice(offset - 10, offset) === "className=";
+
+// export const _isStartOfClassNameValue = (text: string, offset: number) =>
+//   text.slice(offset - 9, offset).toLowerCase() === "className=";
