@@ -1,5 +1,5 @@
 import { describe, expect, test } from "@jest/globals";
-import { _isStartOfClassValue, isOffsetPossiblyInAClass } from "./isOffsetPossiblyInAClass";
+import { _isStartOfClassOrClassNameValue, isOffsetPossiblyInAClass } from "./isOffsetPossiblyInAClass";
 
 describe("isOffsetPossiblyInAClass", () => {
   test("it recognizes empty class attr", () => {
@@ -26,17 +26,23 @@ describe("isOffsetPossiblyInAClass", () => {
     expect(isOffsetPossiblyInAClass(documentText, offset)).toBe(false);
   })
 
-  describe("_isStartOfClassValue", () => {
-    test('it recognizes "class" attr', () => {
+  describe("bootstrap utility css classes", () => {
+    test('it recognizes when "class" attr is used', () => {
       const documentText = `<div class=""></div>`;
       const offset = 11;
-      expect(_isStartOfClassValue(documentText, offset)).toBe(true);
+      expect(_isStartOfClassOrClassNameValue(documentText, offset)).toBe(true);
     })
 
-    test('it recognizes primeng\'s "styleClass" attr', () => {
+    test('it recognizes when "className" attr is used', () => {
+      const documentText = `<div className=""></div>`;
+      const offset = 15;
+      expect(_isStartOfClassOrClassNameValue(documentText, offset)).toBe(true);
+    })
+
+    test('it recognizes when primeng\'s "styleClass" attr is used', () => {
       const documentText = `<div styleClass=""></div>`;
       const offset = 16;
-      expect(_isStartOfClassValue(documentText, offset)).toBe(true);
+      expect(_isStartOfClassOrClassNameValue(documentText, offset)).toBe(true);
     })
   })
 });

@@ -4,7 +4,7 @@ import intellisenseItems from "../intellisenseItems.json";
 import { getHoveredWord } from './utils/getHoveredWord';
 
 export const hoverProvider = vscode.languages.registerHoverProvider(
-  'html',
+  ['html', 'javascriptreact', 'typescriptreact'],
   {
     provideHover: (document, position, token) => {
       const documentText = document.getText();

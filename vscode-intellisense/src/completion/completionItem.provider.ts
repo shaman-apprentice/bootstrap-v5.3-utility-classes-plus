@@ -4,7 +4,7 @@ import intellisenseItems from "../intellisenseItems.json";
 
 
 export const completionItemProvider = vscode.languages.registerCompletionItemProvider(
-  'html',
+  ['html', 'javascriptreact', 'typescriptreact'],
   {
     provideCompletionItems: (
       document: vscode.TextDocument,
