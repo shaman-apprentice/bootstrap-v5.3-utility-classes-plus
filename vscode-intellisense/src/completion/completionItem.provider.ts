@@ -20,6 +20,7 @@ export const completionItemProvider = vscode.languages.registerCompletionItemPro
         result.documentation = new vscode.MarkdownString().appendCodeblock(item.markdownDoc, 'css');
         result.insertText = item.label;
         result.kind = vscode.CompletionItemKind.Constant;
+        result.range = document.getWordRangeAtPosition(position, /[\w-]+/);
         return result;
       });
     }
