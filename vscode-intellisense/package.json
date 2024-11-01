@@ -2,7 +2,7 @@
   "name": "bootstrap-v5-3-utility-classes-plus-intellisense",
   "displayName": "IntelliSense for utility classes based on bootstrap v5.3",
   "description": "IntelliSense for utility classes based on bootstrap v5.3",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.91.0"
   },
