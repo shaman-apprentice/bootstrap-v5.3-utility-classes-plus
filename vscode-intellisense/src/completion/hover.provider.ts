@@ -16,11 +16,11 @@ export const hoverProvider = vscode.languages.registerHoverProvider(
       if (hoveredWord === null)
         return null;
 
-      const indexOfIntellisenseItem = intellisenseItems.findIndex(item => item.label === hoveredWord);
-      if (indexOfIntellisenseItem === -1)
+      const item = intellisenseItems.find(item => item.label === hoveredWord);
+      if (item === undefined)
         return null;
 
-      const hoverInfo = new vscode.MarkdownString().appendCodeblock(intellisenseItems[indexOfIntellisenseItem].markdownDoc, "css");
+      const hoverInfo = new vscode.MarkdownString().appendCodeblock(item.markdownDoc, "css");
       return new vscode.Hover(hoverInfo);
     }
   }
